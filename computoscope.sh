@@ -18,35 +18,29 @@ echo "                     📁 📁 📁 one moment... 📁 📁 📁 "
 echo " "
 echo " "
 
-find . -iname "*.${1}" -print 2>&1 | grep -v "Permission denied" | sed -e 's;[^/]*/;📁 ;g;s; |; 📁;g' > ./computomancy/tree.txt
+find . -iname "*.${1}" -print 2>&1 | grep -v "Permission denied" | sed -e 's;[^/]*/; 📁;g;s; |; 📁;g' > ./computomancy/tree.txt
 
 cd computomancy
 
 echo " "
 echo " "
 
-
-
-
 #this might make your computer explode...
-
 max=0
 deepestDarkestFile=0
 while read f; do
   count=$(echo ${f} | grep -o '📁' | wc -l)
-  echo -n "$f"
+  echo -n "$f "
   if (( $count > $max )); then
     max=$count;
     deepestDarkestFile=$f;
   fi;
 done <./tree.txt
+
 echo " "
 echo " "
 echo " "
-echo -n "your computational sine is "
-echo -n $max
-echo -n " folders deep"
-echo " "
+echo "          your computational sine is $max folders deep"
 echo " "
 echo $deepestDarkestFile
 echo " "

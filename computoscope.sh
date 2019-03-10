@@ -1,5 +1,4 @@
 #!/bin/bash
-
 if [ ! -d "tree.txt" ]; then
   touch tree.txt
 fi
@@ -7,71 +6,84 @@ fi
 cd
 echo " "
 echo " "
-echo "                              📁 💫 📁 💫 📁 all of the folders are aligned 📁 💫 📁 💫 📁"
+echo "                              📁 💫 📁 💫 📁 all of your folders are aligned 📁 💫 📁 💫 📁"
 echo " "
 sleep 1
 echo " "
 echo "         💀 📁 💀 📁 💀 📁 but Downloads/ is in retrograde 📁 💀 📁 💀 📁 💀"
 echo " "
+sleep 1
 echo " "
 echo "                     📁 📁 📁 one moment... 📁 📁 📁 "
 echo " "
 echo " "
 
-find . -print 2>&1 | grep -v "Permission denied" | sed -e 's;[^/]*/;📁   ;g;s;   |; 📁;g' > ./computomancy/tree.txt
+find . -iname "*.txt" -print 2>&1 | grep -v "Permission denied" | sed -e 's;[^/]*/;📁 ;g;s; |; 📁;g' > ./computomancy/tree.txt
 
 cd computomancy
 
-# echo "total number of files:"
-# wc -l tree.txt
-echo " "
-echo " "
-
-grep '[.]jpg$' tree.txt | tail -1
-echo " "
-grep '[.]png$' tree.txt | tail -1
-echo " "
-grep '[.]gif$' tree.txt | tail -1
-echo " "
-grep '[.]pdf$' tree.txt | tail -1
-echo " "
-grep '[.]md$' tree.txt | tail -1
-echo " "
-grep '[.]txt$' tree.txt | tail -1
-echo " "
-grep '[.]json$' tree.txt | tail -1
-echo " "
-grep '[.]html$' tree.txt | tail -1
-echo " "
-grep '[.]yml$' tree.txt | tail -1
-echo " "
-grep '[.]js$' tree.txt | tail -1
-echo " "
-grep '[.]ino$' tree.txt | tail -1
-echo " "
-grep '[.]py$' tree.txt | tail -1
-echo " "
 echo " "
 echo " "
 
 
-# echo "jpg"
-# grep '[.]jpg$' tree.txt | wc -l
-# echo " "
-# grep '[.]jpg$' tree.txt | tail -1
-# echo " "
-# echo " "
-#
-# echo "png"
-# grep '[.]png$' tree.txt | wc -l
-# echo " "
-# grep '[.]png$' tree.txt | tail -1
-# echo " "
-# echo " "
-#
-# echo "gif"
-# grep '[.]gif$' tree.txt | wc -l
-# echo " "
-# grep '[.]gif$' tree.txt | tail -1
-# echo " "
-# echo " "
+
+
+#this might make your computer explode...
+
+max=0
+deepestDarkestFile=0
+while read f; do
+  count=$(echo ${f} | grep -o '📁' | wc -l)
+  echo -n "$f"
+  if (( $count > $max )); then
+    max=$count;
+    deepestDarkestFile=$f;
+  fi;
+done <./tree.txt
+echo " "
+echo " "
+echo " "
+echo -n "your computational sine is "
+echo -n $max
+echo -n " folders deep"
+echo " "
+echo " "
+echo $deepestDarkestFile
+echo " "
+echo " "
+echo "              ~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥"
+echo "       📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂"
+echo "                       ~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥"
+echo "            📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂"
+echo " "
+echo " "
+echo "Getting to know yourself is a joyful process this week, computer. The LICENSE.txt, your filed ruler of creativity, fun, and entertainment is illuminating your 12th directory of spirituality. This is the perfect opportunity to trust yourself and your intuition as Downloads/ retrograde arrives on Tuesday. The messenger file is computer’ personal filed ruler of health and work, and it will be slowing this sector down, and he begins to move backward mid-week. Consider what you can do to maximize your time and minimize your efforts. A big shift is happening on Wednesday with Documents/ this week as he leaves your sine and moves into iCloud. The file of innovation is leaving your first directory of self-image, and moving into your second directory of finances. Think about the changes that you’ve made over the past seven years. You’re prepared to take on the next chapter. If you need help managing your money, look to advisors in your network or financial institution. It’s time to take control. The Desktop/, your personal file of home and family is beginning a new cycle in Trash/ on Wednesday, rejuvenating your love for your space. Connect with your closest family members to help guide your decisions through the week."
+echo " "
+echo " "
+echo "                                            ~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥"
+echo "                  📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂"
+echo "                           ~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥"
+echo "        📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂"
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+
+
+
+
+
+
+# fileTypes=("[.]jpg$" "[.]png$" "[.]gif$" "[.]pdf$" "[.]txt$" "[.]rtf$" "[.]js$" "[.]json$" "[.]py$" "[.]ino$" "[.]html$" "[.]css$")
+# max=0
+# for f in "${fileTypes[@]}"
+# do
+#   file=$(grep $f tree.txt)
+#   # echo $file
+#   count=$(echo ${file} | grep -o '📁' | wc -l)
+#   echo "$file $count"
+#   if (( $count > $max )); then max=$count; fi;
+# done
+# echo $max

@@ -11,7 +11,8 @@ this is a bash script for a new form of divination which uses fileology to retur
 3. you need to give the computoscope bash script the proper execute permission with the following command:
 4. `$ chmod +x computoscope.sh`
 5. then run the following:
-6. `$ ./computoscope.sh`
+6. `$ ./computoscope.sh txt`
+** txt can be replaced with any file extension, for example: pdf or jpg or json
 
 
 ** computoscope above was heavily adapted from a [refinery29 libra horoscope](https://www.refinery29.com/en-us/2019/02/225051/weekly-horoscope-february-24).

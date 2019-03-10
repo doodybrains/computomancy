@@ -18,7 +18,7 @@ echo "                     📁 📁 📁 one moment... 📁 📁 📁 "
 echo " "
 echo " "
 
-find . -iname "*.txt" -print 2>&1 | grep -v "Permission denied" | sed -e 's;[^/]*/;📁 ;g;s; |; 📁;g' > ./computomancy/tree.txt
+find . -iname "*.${1}" -print 2>&1 | grep -v "Permission denied" | sed -e 's;[^/]*/;📁 ;g;s; |; 📁;g' > ./computomancy/tree.txt
 
 cd computomancy
 
@@ -70,20 +70,3 @@ echo " "
 echo " "
 echo " "
 echo " "
-
-
-
-
-
-
-# fileTypes=("[.]jpg$" "[.]png$" "[.]gif$" "[.]pdf$" "[.]txt$" "[.]rtf$" "[.]js$" "[.]json$" "[.]py$" "[.]ino$" "[.]html$" "[.]css$")
-# max=0
-# for f in "${fileTypes[@]}"
-# do
-#   file=$(grep $f tree.txt)
-#   # echo $file
-#   count=$(echo ${file} | grep -o '📁' | wc -l)
-#   echo "$file $count"
-#   if (( $count > $max )); then max=$count; fi;
-# done
-# echo $max

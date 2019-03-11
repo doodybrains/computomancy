@@ -1,7 +1,4 @@
 #!/bin/bash
-if [ ! -d "tree.txt" ]; then
-  touch tree.txt
-fi
 
 cd
 echo " "
@@ -18,7 +15,7 @@ echo "                     📁 📁 📁 one moment... 📁 📁 📁 "
 echo " "
 echo " "
 
-find . -iname "*.${1}" -print 2>&1 | grep -v "Permission denied" | sed -e 's%/[^/]*$%/%' > ./computomancy/files.txt
+find . -iname "*.${1}" -print 2>&1 | grep -v "Permission denied" | sed -e 's/^/./' > ./computomancy/files.txt
 
 find . -iname "*.${1}" -print 2>&1 | grep -v "Permission denied" | sed -e 's;[^/]*/; 📁;g;s; |; 📁;g' > ./computomancy/tree.txt
 
@@ -39,45 +36,53 @@ while read f; do
   fi;
 done <./tree.txt
 
-# need to connect these two, horoscope should read from cine file
+maxPath=0
+deepestDarkestPath=0
+while read path; do
+  countPath=$(echo ${path} | grep -o '/' | wc -l)
+  if (( $countPath > $maxPath )); then
+    maxPath=$countPath;
+    deepestDarkestPath=$path;
+  fi;
+done <./files.txt
 
-foldersArray=()
-while read line; do
-  for word in $line; do
-    foldersArray+=($word)
-  done
-done < files.txt
+cat $deepestDarkestPath > ./deepest-file.txt
 
-sed -i '' 's/planet/folder/g' ./horoscope.txt
-sed -i '' 's/Taurus/computer/g' ./horoscope.txt
-sed -i '' 's/lunar/ssh/g' ./horoscope.txt
-sed -i '' 's/Uranus/Caches/g' ./horoscope.txt
-sed -i '' 's/Jupiter/Calendars/g' ./horoscope.txt
-sed -i '' 's/Mars/Desktop/g' ./horoscope.txt
+sed -i '' 's/sun/file/g' ./computoscope.txt
+sed -i '' 's/Moon/browser/g' ./computoscope.txt
+sed -i '' 's/planet/folder/g' ./computoscope.txt
+sed -i '' 's/Taurus/computer/g' ./computoscope.txt
+sed -i '' 's/lunar/ssh/g' ./computoscope.txt
+sed -i '' 's/Uranus/Caches/g' ./computoscope.txt
+sed -i '' 's/Jupiter/Calendars/g' ./computoscope.txt
+sed -i '' 's/Mars/Desktop/g' ./computoscope.txt
+sed -i '' 's/MaxFolders/${max}/g' ./computoscope.txt
+sed -i '' 's/FillInSine/${deepestDarkestFile}/g' ./computoscope.txt
+
+xxd -b ./deepest-file.txt > ./computational-sine.txt
+
+sed -i '' 's/1/📂/g' ./computational-sine.txt
+sed -i '' 's/0/📁/g' ./computational-sine.txt
 
 echo " "
 echo " "
 echo " "
-echo "your computational sine $deepestDarkestFile is $max folders deep"
+echo " "
+echo " "
+echo " "
+echo "your computational sine is $max folders deep"
+sleep 2
 echo " "
 echo " "
 echo " "
 echo "              ~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥"
 echo "       📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂"
-echo "                       ~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥"
+echo "     getting computoscope                  ~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥"
 echo "            📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂"
 echo " "
 echo " "
-cat ./horoscope.txt
-echo " "
-echo " "
-echo "      ~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥"
-echo "                  📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂"
-echo "                           ~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥~~~💥"
-echo "        📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂 📂"
-echo " "
-echo " "
-echo " "
-echo " "
-echo " "
-echo " "
+sleep 2
+open $deepestDarkestPath
+cat ./computational-sine.txt
+sleep 2
+open ./computoscope.txt

@@ -68,8 +68,6 @@ echo " "
 echo " "
 echo " "
 echo " "
-echo " "
-echo " "
 echo "your computational sine is $max folders deep"
 sleep 2
 echo " "
